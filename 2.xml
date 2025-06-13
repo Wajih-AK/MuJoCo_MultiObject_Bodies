@@ -1,0 +1,37 @@
+<mujoco>
+
+    <option gravity = "0 0 -9.81" viscosity = "0.00002" density = "1.2" wind = "0 5 0" />
+    <visual>
+        <headlight ambient = "0.6 0.2 0.2" diffuse = "0.5 0.5 0.5" specular = "0.5 0.5 0.4" />
+    </visual>
+
+    <worldbody>
+        <!-- Defining the floor with light setting -->
+        <geom name = "floor" type = "plane" size = "25 15 0.1" rgba = "1 0.65 0 1"/>
+        <!-- Wall for background -->
+        <geom name = "wall" type = "plane" size = "30 18 0.1" rgba = "1 0.65 0 1" pos = "25 0 0.1" euler = "0 -90 0"/>
+        <light diffuse = "1 1 1" pos = " 0 0 50" dir = "0 0 -1"/>
+
+        <!-- Defining a body in the environment -->
+        <body name = "shoulder1" pos = "0 0 13">
+            <geom  name = "shoulder" type ="capsule" size = "0.5" mass= "0.3"  fromto = "0 0 0 0 0 -3" rgba = "0 0.8 0.7 0.2" euler = "0 0 0 "/>
+            <joint name= "joint_shoulder" type = "ball" pos = "0 0 0"/>
+            
+            <body name = "elbow1" pos ="0 0 -3">
+                <geom  name = "elbow" type= "capsule" size = "0.6" mass = "0.4" rgba = "0 0 1 0.2" fromto = "0 0 0 0 0 -3.5" />
+                <joint name = "joint_elbow" type = "hinge" pos = "0 0 0" axis = "1 0 0"/>
+                
+                <body name = "wrist1" pos ="0 0 -3.5">
+                    <geom  name = "wrist" type= "sphere" size = "0.8" mass = "6" rgba = "1 0 0 1"  />
+                </body>
+            </body>
+
+        </body>
+        
+
+
+
+    </worldbody>
+    
+
+</mujoco>
